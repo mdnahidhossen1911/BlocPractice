@@ -1,4 +1,5 @@
 import 'package:bloc_practice/bloc/counter/counter_bloc.dart';
+import 'package:bloc_practice/bloc/swithing/switing_bloc.dart';
 import 'package:bloc_practice/ui/screen/counter_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,8 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CounterBloc()),
+        BlocProvider(create: (context) => SwitingBloc()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
